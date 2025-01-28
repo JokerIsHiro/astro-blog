@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "About Me";
+
+const persona = {
+  nombre: "Carlos",
+  occupation: "Desarrollador Web",
+  hobbies: ["YuGiOh", "tenis", "videojuegos"],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Laravel",
+  "Astro",
+  "Angular",
+  "Tailwind",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <BaseLayout>
+    <h1>{pageTitle}</h1>
+    <h2>... and my new Astro site!</h2>
+    <p>Aqui hay unas cosas sobre mi</p>
+    <ul>
+      <li>Me llamo {persona.nombre}.</li>
+      <li>Soy un {persona.occupation}</li>
+      {
+        persona.hobbies.length >= 2 && (
+          <li>
+            Mis hobbies son {persona.hobbies[0]},{persona.hobbies[1]} y{" "}
+            {persona.hobbies[2]}
+          </li>
+        )
+      }
+    </ul>
+    <p>Mis habilidades</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
+  </BaseLayout>
+</html>
